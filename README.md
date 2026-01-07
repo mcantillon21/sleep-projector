@@ -2,7 +2,8 @@
 
 A ceiling projector display wired to WHOOP that wakes you after exactly 6 hours of sleep with ambient visuals and your favorite phrases.
 
-![Sleep Projector](screenshot.png)
+![image](https://github.com/user-attachments/assets/c8410b9f-b692-4a8b-b3fb-d3910776ece8)
+
 
 ## What It Does
 
