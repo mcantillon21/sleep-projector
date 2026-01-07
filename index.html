@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Projector - Live Stream</title>
+    <!-- Sohne font from Klim Type Foundry via fonts.com -->
+    <link rel="stylesheet" href="https://fast.fonts.net/cssapi/2b07f0ce-305d-4903-8d33-09555bcb3be8.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- YouTube Video Background (video ID set via CONFIG in script.js) -->
+    <div class="video-container">
+        <iframe
+            id="youtubePlayer"
+            src="about:blank"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- Click to enable sound overlay -->
+    <div id="soundOverlay" class="sound-overlay">
+        <div class="sound-prompt">
+            <div class="sound-icon">🔊</div>
+        </div>
+    </div>
+
+    <!-- Top Center - Name and DateTime -->
+    <div class="header-container">
+        <div class="name-section">
+            <h1 class="name"></h1>
+        </div>
+        <div class="info-section">
+            <span id="currentDate">Loading...</span>
+            <span class="separator">|</span>
+            <span id="currentTime">00:00</span>
+            <span class="separator">|</span>
+            <span id="sunriseInfo">-- to sunrise</span>
+        </div>
+    </div>
+
+    <!-- Right Side Overlay for Whoop Scores -->
+    <div class="overlay-container">
+        <div class="whoop-section">
+            <div class="whoop-scores-row">
+                <div class="whoop-score recovery" id="recoveryScore">
+                    <div class="score-header">
+                        <div class="score-label">Recovery</div>
+                        <div class="score-percent">%</div>
+                    </div>
+                    <div class="score-value" id="recoveryValue">--</div>
+                </div>
+
+                <div class="whoop-score sleep" id="sleepScore">
+                    <div class="score-header">
+                        <div class="score-label">Sleep</div>
+                        <div class="score-percent">%</div>
+                    </div>
+                    <div class="score-value" id="sleepValue">--</div>
+                </div>
+
+                <div class="whoop-score strain" id="strainScore">
+                    <div class="score-header">
+                        <div class="score-label">Strain</div>
+                        <div class="score-unit">/21</div>
+                    </div>
+                    <div class="score-value" id="strainValue">--</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SunCalc library for sunrise calculations -->
+    <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
