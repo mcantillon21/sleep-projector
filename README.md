@@ -62,26 +62,18 @@ Project this onto your ceiling before bed. It displays your real-time WHOOP stat
    ```bash
    cp .env.example .env
    ```
-   Edit `.env` with your credentials:
-   ```
-   WHOOP_CLIENT_ID=your_client_id
-   WHOOP_CLIENT_SECRET=your_client_secret
-   WHOOP_ACCESS_TOKEN=your_access_token
-   WHOOP_REFRESH_TOKEN=your_refresh_token
-   ```
-
-5. Get your access tokens:
+   Add your Client ID and Secret to `.env`, then get your tokens:
    ```bash
    python3 get_whoop_token.py
    ```
-   Follow the OAuth flow to get your access and refresh tokens.
+   Follow the OAuth flow and add the tokens to `.env`.
 
-6. Start the backend server:
+5. Start the backend server:
    ```bash
    python3 webhook_server.py
    ```
 
-7. Open http://localhost:5001 in your browser
+6. Open http://localhost:5001 in your browser
 
 ## Configuration
 
@@ -133,7 +125,8 @@ sleep-projector/
 ├── styles.css          # Styling
 ├── script.js           # Frontend JavaScript
 ├── webhook_server.py   # Flask backend for WHOOP API
-├── get_whoop_token.py  # Helper to get WHOOP OAuth tokens
+├── get_whoop_token.py  # OAuth helper to get WHOOP tokens
+├── start-server.sh     # Start the backend server
 ├── requirements.txt    # Python dependencies
 ├── .env.example        # Example environment variables
 ├── .gitignore          # Git ignore rules
@@ -151,13 +144,6 @@ For the best experience:
    - Current time and date
    - Time until sunrise
    - Your WHOOP stats (if configured)
-
-## Scripts
-
-- `start-server.sh` - Start the Python backend server
-- `launch-on-projector.sh` - Launch on external display
-- `auto-detect-projector.sh` - Auto-detect and launch on projector
-- `open-app.sh` - Quick open in browser
 
 ## Tech Stack
 

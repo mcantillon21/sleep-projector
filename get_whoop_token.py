@@ -4,14 +4,18 @@ Whoop OAuth Token Getter
 This script helps you get fresh access_token and refresh_token from Whoop
 """
 
+import os
 import requests
 import webbrowser
 import secrets
 from urllib.parse import urlencode, urlparse, parse_qs
+from dotenv import load_dotenv
 
-# Your Whoop App Credentials
-CLIENT_ID = 'b3e7f107-34b0-412f-83c3-b542c871d618'
-CLIENT_SECRET = '314450a6e83b283cfc5df2402f6296ad01988671b082baa4f8db1e1685299a32'
+load_dotenv()
+
+# Your Whoop App Credentials (from .env file)
+CLIENT_ID = os.getenv('WHOOP_CLIENT_ID')
+CLIENT_SECRET = os.getenv('WHOOP_CLIENT_SECRET')
 REDIRECT_URI = 'http://localhost:8000/callback'  # Must match Whoop OAuth app settings
 
 # Whoop OAuth endpoints
@@ -56,6 +60,11 @@ def main():
     print("🏃 Whoop OAuth Token Getter")
     print("=" * 50)
     print()
+
+    if not CLIENT_ID or not CLIENT_SECRET:
+        print("❌ Missing WHOOP_CLIENT_ID or WHOOP_CLIENT_SECRET in .env file")
+        print("   Copy .env.example to .env and add your credentials")
+        return
 
     # Step 1: Get authorization URL
     auth_url, state = get_authorization_url()
@@ -123,9 +132,9 @@ def main():
         print()
         print("=" * 50)
         print()
-        print("💾 Now update webhook_server.py with these values:")
-        print(f"   ACCESS_TOKEN = '{tokens.get('access_token')}'")
-        print(f"   REFRESH_TOKEN = '{tokens.get('refresh_token')}'")
+        print("💾 Now update your .env file with these values:")
+        print(f"   WHOOP_ACCESS_TOKEN={tokens.get('access_token')}")
+        print(f"   WHOOP_REFRESH_TOKEN={tokens.get('refresh_token')}")
         print()
     else:
         print("❌ Failed to get tokens")

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Start the webhook server in the background
 
-cd /Users/molly/sleep-projector
+cd "$(dirname "$0")"
 
 # Check if server is already running
 if lsof -Pi :5001 -sTCP:LISTEN -t >/dev/null ; then
